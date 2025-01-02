@@ -1,0 +1,77 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #af2727;
+  border-radius: 9rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6f0c0c;
+}
+
+.scrollable-container {
+  width: 340px; /* Fixed width for the container */
+  max-height: 360px; /* Set maximum height to enable vertical scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: #fdd8d8;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 8px;
+}
+
+.grid-item {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe0e0;
+  border: 2px solid #ff6d6d;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.dragon-image {
+  width: 80%;
+  height: auto;
+}
+
+.add-icon {
+  font-size: 24px;
+  color: #ff6d6d;
+  font-weight: bold;
+}
+
+.grid-item.empty {
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+}
+
+.pet-info {
+  display: flex;
+  justify-content: end;
+  margin-right: 3px;
+}
+
+.pet-info-images {
+  width: 20%;
+  height: auto;
+  margin: 0px 1px;
+}

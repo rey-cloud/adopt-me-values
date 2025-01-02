@@ -1,0 +1,87 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 60rem;
+  height: auto;
+  max-height: 100%;
+  background-color: #111214;
+  padding: 4rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 5rem 4rem rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.container-modal {
+  width: 52rem;
+  height: 30rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 3 items per row */
+  gap: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.normal-button {
+  padding: 10px 20px;
+  margin: 0px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unselected-color {
+  background-color: gray;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.buttons-section {
+  text-align: center;
+}
+
+.fly-button-selected {
+  background-color: dodgerblue;
+  margin: 0px 15px;
+}
+
+.ride-button-selected {
+  background-color: crimson;
+  margin: 0px 15px;
+}
+
+.normal-button-selected {
+  background-color: orange;
+  margin: 0px 15px;
+}
+
+.neon-button-selected {
+  background-color: yellowgreen;
+  margin: 0px 15px;
+}
+
+.mega-button-selected {
+  background-color: darkmagenta;
+  margin: 0px 15px;
+}
