@@ -1,25 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./TradeContainer.css";
-import dragon from "./assets/Dragon_Pet.webp";
 import Modal from "./Modal";
 import Fly from "./assets/Fly.png";
 import Ride from "./assets/Ride.png";
 import Neon from "./assets/Neon.png";
 import Mega from "./assets/Mega.png";
 
-const TradeContainer = () => {
+const TradeContainer = ({ value, setValue }) => {
   // Array representing the grid items
   const [gridItems, setGridItems] = useState([]); // Generates 10 items
   const [showModal, setModal] = useState(false);
+  const [addVal, setAddVal] = useState(true);
+  const [pets, setPets] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/pets")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("All Pets: ", data);
+        setPets(data);
+      });
+  }, []);
 
   const renderContent = (currentID, previousID) => {
     if (gridItems[currentID]) {
       return (
-        <img
-          src={`../public/images/${gridItems[currentID].pet.pet_image}`}
-          alt=""
-          className="dragon-image"
-        />
+        <>
+          <img
+            src={`../public/images/${gridItems[currentID].pet.pet_image}`}
+            alt=""
+            className="dragon-image"
+          />
+          <div className="pet-info">
+            <>
+              {gridItems[currentID].neon || gridItems[currentID].mega ? (
+                <img
+                  src={gridItems[currentID].neon ? Neon : Mega}
+                  alt=""
+                  className="pet-info-images"
+                />
+              ) : null}
+
+              {gridItems[currentID].fly ? (
+                <img src={Fly} alt="" className="pet-info-images" />
+              ) : null}
+
+              {gridItems[currentID].ride ? (
+                <img src={Ride} alt="" className="pet-info-images" />
+              ) : null}
+            </>
+          </div>
+        </>
       );
     }
     if (gridItems[previousID]) {
@@ -31,12 +64,22 @@ const TradeContainer = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setModal(true);
-    console.log("hello", gridItems);
-    console.log(gridItems[0].fly);
-    // setGridItems((prevItems) => [...prevItems, pet]); // Add a new item
   };
 
+  useEffect(() => {
+    if (gridItems.length > 0 && addVal) {
+      // Prevents errors when gridItems is empty
+      const lastItemValue = Number(gridItems[gridItems.length - 1].petVal);
+      console.log("Last item value:", lastItemValue);
+
+      setValue((prevValue) => prevValue + lastItemValue);
+    }
+  }, [gridItems]); // Removed setValue from dependencies
+
   const removePet = (id) => {
+    setAddVal(false);
+    console.log("remove petvalue", id.petVal);
+    setValue((prevValue) => prevValue - id.petVal);
     setGridItems((prevItems) => prevItems.filter((item) => item !== id)); // Remove item by value
   };
 
@@ -60,27 +103,23 @@ const TradeContainer = () => {
                   className="dragon-image"
                 />
                 <div className="pet-info">
-                  <img
-                    src={
-                      gridItems[0].neon || gridItems[0].mega
-                        ? gridItems[0].neon
-                          ? Neon
-                          : Mega
-                        : ""
-                    }
-                    alt=""
-                    className="pet-info-images"
-                  />
-                  <img
-                    src={gridItems[0].fly ? Fly : ""}
-                    alt=""
-                    className="pet-info-images"
-                  />
-                  <img
-                    src={gridItems[0].ride ? Ride : ""}
-                    alt=""
-                    className="pet-info-images"
-                  />
+                  <>
+                    {gridItems[0].neon || gridItems[0].mega ? (
+                      <img
+                        src={gridItems[0].neon ? Neon : Mega}
+                        alt=""
+                        className="pet-info-images"
+                      />
+                    ) : null}
+
+                    {gridItems[0].fly ? (
+                      <img src={Fly} alt="" className="pet-info-images" />
+                    ) : null}
+
+                    {gridItems[0].ride ? (
+                      <img src={Ride} alt="" className="pet-info-images" />
+                    ) : null}
+                  </>
                 </div>
               </>
             ) : (
@@ -298,6 +337,9 @@ const TradeContainer = () => {
         show={showModal}
         onClose={() => setModal(false)}
         setGridItems={setGridItems}
+        setAddVal={setAddVal}
+        pets={pets}
+        setPets={setPets}
       />
     </>
   );

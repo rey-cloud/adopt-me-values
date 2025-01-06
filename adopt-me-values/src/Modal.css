@@ -30,13 +30,20 @@
 }
 
 .container-modal {
-  width: 52rem;
-  height: 30rem;
+  width: 100%;
+  max-width: 52rem;
+  height: 30rem; /* Fixed height */
   display: grid;
-  grid-template-columns: repeat(8, 1fr); /* 3 items per row */
-  gap: 5px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(100px, 1fr)
+  ); /* Responsive grid */
+  gap: 10px; /* Spacing between grid items */
+  padding: 10px;
+  box-sizing: border-box;
+  align-content: flex-start; /* Aligns items to the top */
+  overflow-x: hidden; /* No horizontal scroll */
+  overflow-y: auto; /* Scroll vertically if needed */
 }
 
 .normal-button {
@@ -84,4 +91,82 @@ button:hover {
 .mega-button-selected {
   background-color: darkmagenta;
   margin: 0px 15px;
+}
+
+.modal-grid-items {
+  width: 100%; /* Adjust width dynamically */
+  max-width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffeeee;
+  border: 2px solid #ff6d6d;
+  border-radius: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.modal-images {
+  position: absolute;
+  width: 70%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%; /* Utilize more width on smaller screens */
+    padding: 2rem;
+  }
+
+  .container-modal {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(60px, 1fr)
+    ); /* Smaller grid items */
+    gap: 3px;
+  }
+
+  .modal-grid-items {
+    height: 80px; /* Smaller grid item size */
+  }
+
+  .modal-images {
+    width: 60%; /* Adjust image size */
+  }
+
+  .buttons-section button {
+    padding: 8px 12px; /* Smaller buttons */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .container-modal {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(50px, 1fr)
+    ); /* Even smaller grid items */
+  }
+
+  .modal-grid-items {
+    height: 70px; /* Smaller grid item height */
+  }
+
+  .modal-images {
+    width: 50%; /* Adjust image size */
+  }
+
+  .buttons-section button {
+    padding: 6px 10px; /* Smaller buttons */
+    font-size: 12px;
+  }
 }

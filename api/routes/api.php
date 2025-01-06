@@ -12,3 +12,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/pets', [PetsController::class, 'index']);
 Route::post('/pets', [PetsController::class, 'store']);
 Route::get('/pets/{id}', [PetsController::class, 'show']);
+Route::get('/pets/search/{pet_name}', [PetsController::class, 'search']);
