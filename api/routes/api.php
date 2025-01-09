@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PetsController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
@@ -13,3 +14,9 @@ Route::get('/pets', [PetsController::class, 'index']);
 Route::post('/pets', [PetsController::class, 'store']);
 Route::get('/pets/{id}', [PetsController::class, 'show']);
 Route::get('/pets/search/{pet_name}', [PetsController::class, 'search']);
+Route::get('/run-migration', function(){
+    Artisan::call('optimize:clear');
+    Artisan::call('migrate');
+
+    return "Migrations executed successfully";
+});

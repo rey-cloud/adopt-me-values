@@ -60,7 +60,7 @@
   background-color: gray;
 }
 
-button:hover {
+.buttons-section button:hover {
   transform: scale(1.1);
 }
 

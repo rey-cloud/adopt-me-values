@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./Create.css";
+import FlyImage from "../assets/Fly.png";
+import RideImage from "../assets/Ride.png";
+import NeonImage from "../assets/Neon.png";
+import MegaImage from "../assets/Mega.png";
 
 const Create = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +24,14 @@ const Create = () => {
   });
 
   const handleChange = (e) => {
+    console.log(e);
+    if (e.target.files?.length > 0) {
+      const src = URL.createObjectURL(event.target.files[0]);
+      const preview = document.getElementById("file-ip-1-preview");
+      preview.src = src;
+      preview.style.display = "block";
+      upload.style.display = "block";
+    }
     console.log("changing", formData);
     const { name, value } = e.target;
     setFormData({
@@ -52,123 +64,213 @@ const Create = () => {
   };
 
   return (
-    <form className="main-div" onSubmit={handleSubmit}>
-      <label>
-        Pet Name:{" "}
-        <input
-          name="pet_name"
-          value={formData.pet_name}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Pet Image:{" "}
-        <input
-          type="file"
-          name="pet_image"
-          value={formData.pet_image}
-          onChange={handleChange}
-        />
-      </label>
-      <hr />
-      <label>
-        No Potion Normal:{" "}
-        <input
-          name="normal_no_potion"
-          value={formData.normal_no_potion}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Normal Fly:{" "}
-        <input
-          name="normal_fly"
-          value={formData.normal_fly}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Normal Ride:{" "}
-        <input
-          name="normal_ride"
-          value={formData.normal_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Normal Fly Ride:{" "}
-        <input
-          name="normal_fly_ride"
-          value={formData.normal_fly_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        No Potion Neon:{" "}
-        <input
-          name="neon_no_potion"
-          value={formData.neon_no_potion}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Neon Fly:{" "}
-        <input
-          name="neon_fly"
-          value={formData.neon_fly}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Neon Ride:{" "}
-        <input
-          name="neon_ride"
-          value={formData.neon_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Neon Fly Ride:{" "}
-        <input
-          name="neon_fly_ride"
-          value={formData.neon_fly_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        No Potion Mega:{" "}
-        <input
-          name="mega_no_potion"
-          value={formData.mega_no_potion}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Mega Fly:{" "}
-        <input
-          name="mega_fly"
-          value={formData.mega_fly}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Mega Ride:{" "}
-        <input
-          name="mega_ride"
-          value={formData.mega_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Mega Fly Ride:{" "}
-        <input
-          name="mega_fly_ride"
-          value={formData.mega_fly_ride}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="main-page-create">
+      <header className="create-header">
+        <div className="page-title">Create Pet Value</div>
+        <div className="btn-container">
+          <button className="back-button">Go Back</button>
+        </div>
+      </header>
+      <div className="create-page-content">
+        <form className="separate-up-down" onSubmit={handleSubmit}>
+          <div className="main-div">
+            <label>
+              Select Image <br />
+              <div className="img-container">
+                <img
+                  src=""
+                  alt=""
+                  id="file-ip-1-preview"
+                  className="preview-image"
+                />
+              </div>
+            </label>
+            <input
+              type="file"
+              name="pet_image"
+              hidden=""
+              id="upload"
+              accept="image/*"
+              onChange={handleChange}
+            />
+            <label>
+              <input
+                name="pet_name"
+                value={formData.pet_name}
+                onChange={(e) => handleChange(e)}
+                placeholder="Pet Name"
+              />
+            </label>
+          </div>
+          <div className="pet-attributes">
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">No Potion Normal: </div>
+              <input
+                name="normal_no_potion"
+                value={formData.normal_no_potion}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+
+              <input
+                name="normal_fly"
+                value={formData.normal_fly}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="normal_ride"
+                value={formData.normal_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="normal_fly_ride"
+                value={formData.normal_fly_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={NeonImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="neon_no_potion"
+                value={formData.neon_no_potion}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={NeonImage} alt="" className="attribute-image" />
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="neon_fly"
+                value={formData.neon_fly}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={NeonImage} alt="" className="attribute-image" />
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="neon_ride"
+                value={formData.neon_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={NeonImage} alt="" className="attribute-image" />
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="neon_fly_ride"
+                value={formData.neon_fly_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={MegaImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="mega_no_potion"
+                value={formData.mega_no_potion}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={MegaImage} alt="" className="attribute-image" />
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="mega_fly"
+                value={formData.mega_fly}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={MegaImage} alt="" className="attribute-image" />
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="mega_ride"
+                value={formData.mega_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+            <label className="specific-attribute-container">
+              <div className="specific-attributes">
+                <div className="attribute-img-container">
+                  <img src={MegaImage} alt="" className="attribute-image" />
+                  <img src={FlyImage} alt="" className="attribute-image" />
+                  <img src={RideImage} alt="" className="attribute-image" />
+                </div>
+              </div>
+              <input
+                name="mega_fly_ride"
+                value={formData.mega_fly_ride}
+                onChange={handleChange}
+                className="attribute-text-box"
+              />
+            </label>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div className="right-content">These are the contents</div>
+      </div>
+    </div>
   );
 };
 

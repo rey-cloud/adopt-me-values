@@ -1,61 +1,177 @@
-/* General styles for the main container */
 .main-div {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-}
-
-/* Label styles */
-label {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
-  color: #333;
+  text-align: center;
 }
 
-/* Input styles */
-input {
-  flex: 1;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.3s;
+.create-header {
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 10vh;
+  position: relative;
 }
 
-input:focus {
-  border-color: #007bff;
+.page-title {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+  font-weight: bold;
+  font-size: xx-large;
 }
 
-/* Horizontal rule styles */
-hr {
-  border: 0;
-  height: 1px;
-  background-color: #ddd;
-  margin: 1rem 0;
+.create-page-content {
+  display: flex;
+  height: 90vh;
+  text-align: center;
+  align-items: center;
 }
 
-/* Submit button styles */
-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
+.back-button {
+  position: relative;
+  display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: large;
+  font-family: inherit;
 }
 
-button:hover {
-  background-color: #0056b3;
+.back-button {
+  font-weight: 400;
+  color: #382b22;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  background: #fff0f0;
+  border: 2px solid #b18597;
+  border-radius: 0.75em;
+  transition: transform 0.15s;
+  transform-style: preserve-3d;
+}
+
+.back-button::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f9c4d2;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+  transform: translate3d(0, 0.75em, -1em);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.back-button:hover {
+  background: #ffe9e9;
+  transform: translate(0, 0.25em);
+}
+.back-button:hover::before {
+  box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+  transform: translate3d(0, 0.5em, -1em);
+}
+
+.back-button:active {
+  background: #ffe9e9;
+  transform: translate(0em, 0.75em);
+}
+.back-button:active::before {
+  box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+  transform: translate3d(0, 0, -1em);
+}
+
+.btn-container {
+  position: absolute;
+  right: 1rem;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.img-container {
+  width: 10rem;
+  height: 10rem;
+  border-style: dashed;
+  background-color: #f9c4d2;
+  position: relative;
+}
+
+.preview-image {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pet-attributes {
+  display: grid;
+  width: 80%;
+  gap: 0.5rem;
+  grid-template-columns: auto;
+}
+
+.specific-attribute-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 50% 50%;
+}
+
+.separate-up-down {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  border-right: 2px solid black;
+  background: linear-gradient(to bottom, #f9f9f9, #f0e4e4);
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.separate-up-down::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: repeating-linear-gradient(
+    180deg,
+    #b18597,
+    #b18597 10px,
+    #f9c4d2 10px,
+    #f9c4d2 20px
+  );
+}
+
+.attribute-text-box {
+  width: 100%;
+  height: 2rem;
+}
+
+.attribute-image {
+  height: 1.8rem;
+  width: auto;
+}
+
+.attribute-img-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.2rem;
+}
+
+.specific-attributes {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
