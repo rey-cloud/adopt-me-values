@@ -7,6 +7,20 @@ function App() {
   const [leftVal, setLeftVal] = useState(0);
   const [rightVal, setRightVal] = useState(0);
   const [difference, setDifference] = useState(0);
+  const [pets, setPets] = useState([]);
+  const [allPets, setAllPets] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/pets")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("All Pets: ", data);
+        setPets(data);
+        setAllPets(data);
+      });
+  }, [setPets]);
 
   useEffect(() => {
     setDifference(rightVal - leftVal);
@@ -17,7 +31,14 @@ function App() {
   }, [difference]);
 
   if (window.location.pathname === "/create") {
-    return <Create />;
+    return (
+      <Create
+        pets={pets}
+        setPets={setPets}
+        allPets={allPets}
+        setAllPets={setAllPets}
+      />
+    );
   } else {
     return (
       <>
@@ -25,13 +46,26 @@ function App() {
         <div className="main">
           <div className="trade-container">
             <div className="total-value-left">{leftVal.toFixed(2)}</div>
-            <TradeContainer value={leftVal} setValue={setLeftVal} />
+            <TradeContainer
+              value={leftVal}
+              setValue={setLeftVal}
+              pets={pets}
+              setPets={setPets}
+              allPets={allPets}
+              setAllPets={setAllPets}
+            />
           </div>
           <div className="difference">{difference.toFixed(2)}</div>
 
           <div className="trade-container">
             <div className="total-value-right">{rightVal.toFixed(2)}</div>
-            <TradeContainer value={rightVal} setValue={setRightVal} />
+            <TradeContainer
+              value={rightVal}
+              setValue={setRightVal}
+              pets={pets}
+              setPets={setPets}
+              allPets={allPets}
+            />
           </div>
         </div>
       </>

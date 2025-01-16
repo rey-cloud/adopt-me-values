@@ -13,7 +13,7 @@
   max-width: 60rem;
   height: auto;
   max-height: 100%;
-  background-color: #111214;
+  background-color: rgb(244, 244, 244);
   padding: 4rem;
   border-radius: 1rem;
   box-shadow: 0 0 5rem 4rem rgba(0, 0, 0, 0.2);
@@ -22,10 +22,10 @@
 
 .close-button {
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   right: 2rem;
   font-size: 2rem;
-  color: #fff;
+  color: #000000;
   cursor: pointer;
 }
 
@@ -49,15 +49,20 @@
 .normal-button {
   padding: 10px 20px;
   margin: 0px 15px;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid #ff69b4; /* Adds a visible outline */
+  background-color: transparent; /* Transparent background for an "empty" look */
+  border-radius: 5px; /* Rounded corners */
   font-size: 16px;
+  color: #ff69b4; /* Matches the border color */
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.unselected-color {
-  background-color: gray;
+.normal-button:hover {
+  background-color: #ff69b4; /* Adds background on hover */
+  color: white; /* Inverts text color */
+  transform: scale(1.05); /* Slightly enlarges on hover */
 }
 
 .buttons-section button:hover {
@@ -69,28 +74,84 @@
 }
 
 .fly-button-selected {
-  background-color: dodgerblue;
+  background-color: #3498c7;
+  color: white;
   margin: 0px 15px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Adds a fun, casual font */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
+}
+
+.fly-button-selected:hover {
+  background-color: lightblue; /* Slightly lighter shade on hover */
+  transform: translateY(-3px); /* Adds a bouncy effect on hover */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 .ride-button-selected {
-  background-color: crimson;
+  background-color: #ec2676;
+  color: white;
   margin: 0px 15px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Adds a fun, casual font */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
 .normal-button-selected {
   background-color: orange;
+  color: white;
   margin: 0px 15px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Adds a fun, casual font */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
 .neon-button-selected {
-  background-color: yellowgreen;
+  background-color: #8ac742;
+  color: white;
   margin: 0px 15px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Adds a fun, casual font */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
 .mega-button-selected {
-  background-color: darkmagenta;
+  background-color: #3b1386;
+  color: white;
   margin: 0px 15px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif; /* Adds a fun, casual font */
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight text shadow for depth */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
 .modal-grid-items {
@@ -105,6 +166,11 @@
   border-radius: 10px;
   flex-direction: column;
   position: relative;
+}
+
+.modal-grid-items:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 .modal-images {
@@ -169,4 +235,19 @@
     padding: 6px 10px; /* Smaller buttons */
     font-size: 12px;
   }
+}
+
+.modal-search {
+  background-color: #fdf5e6; /* Soft cream background */
+  border: 2px solid #ffb6c1; /* Soft pink border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px; /* Inner spacing */
+  font-family: "Comic Sans MS", "Arial", sans-serif; /* Fun font */
+  font-size: 16px; /* Comfortable text size */
+  color: #ff69b4; /* Vibrant pink text */
+  width: 25%; /* Full width for responsiveness */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth focus/hover effects */
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
 }

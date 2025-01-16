@@ -131,7 +131,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 3rem;
+  gap: 1.5rem;
   border-right: 2px solid black;
   background: linear-gradient(to bottom, #f9f9f9, #f0e4e4);
   box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.1);
@@ -173,5 +173,165 @@
 .specific-attributes {
   display: flex;
   text-align: center;
+  align-items: center;
+}
+
+.custom-file-input {
+  display: none;
+}
+
+.choose-image-button {
+  background-color: #ffe4e6; /* Light pink */
+  border: 2px solid #ffb6c1; /* Soft pink border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 10px 20px; /* Spacing inside the button */
+  font-size: 16px; /* Readable size */
+  color: #ff69b4; /* Vibrant pink text */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  margin: 1rem 0px;
+}
+
+.choose-image-button:hover {
+  background-color: #ffb6c1; /* Change to soft pink on hover */
+  color: white; /* White text on hover */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.choose-image-button:active {
+  background-color: #ff69b4; /* Brighter pink when clicked */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Pressed-in effect */
+}
+
+.pet-name-input {
+  background-color: #fdf5e6; /* Soft cream background */
+  border: 2px solid #ffb6c1; /* Soft pink border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px; /* Inner spacing */
+  font-family: "Comic Sans MS", "Arial", sans-serif; /* Fun font */
+  font-size: 16px; /* Comfortable text size */
+  color: #ff69b4; /* Vibrant pink text */
+  width: 100%; /* Full width for responsiveness */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth focus/hover effects */
+}
+
+.pet-name-input:hover {
+  background-color: #fffafa; /* Light pink background on hover */
+  border-color: #ff69b4; /* Vibrant pink border on hover */
+}
+
+.pet-name-input:focus {
+  outline: none; /* Remove default focus outline */
+  background-color: #ffb6c1; /* Soft pink background on focus */
+  border-color: #ff69b4; /* Vibrant pink border on focus */
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.5); /* Glowing effect on focus */
+}
+
+.submit-button-create {
+  background-color: #ffd1dc; /* Light pink background */
+  border: 2px solid #ff69b4; /* Vibrant pink border */
+  border-radius: 20px; /* Rounded edges for a cute button */
+  padding: 12px 24px; /* Comfortable spacing */
+  font-size: 16px; /* Readable text size */
+  color: black; /* White text for contrast */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-transform: uppercase; /* Stylish uppercase text */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth hover and focus effects */
+}
+
+.submit-button-create:hover {
+  background-color: #ff69b4; /* Brighter pink on hover */
+  border-color: #ff1493; /* Deep pink border on hover */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+  transform: translateY(-2px); /* Lift effect on hover */
+  color: white;
+}
+
+.submit-button-create:active {
+  background-color: #ff1493; /* Deep pink when clicked */
+  border-color: #ff69b4; /* Vibrant pink border on click */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3); /* Pressed-in effect */
+  transform: translateY(2px); /* Slight sink effect on click */
+}
+
+.submit-button-create:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6); /* Glowing effect on focus */
+}
+
+.filter-image {
+  width: 2rem;
+  height: 2rem;
+}
+
+.search-filter-container {
+  display: flex;
+  justify-content: start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.right-content {
+  border: 1px solid orange;
+  height: 90vh;
+  width: 70vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 3rem 2rem;
+}
+
+.grid-samples {
+  border: 1px solid #f2d9e6; /* Light pink border */
+  background-color: #fffafc; /* Soft pinkish background */
+  height: 9rem;
+  display: flex; /* Enables Flexbox */
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: "Comic Sans MS", sans-serif; /* Fun and cute font */
+  font-size: 1.2rem; /* Slightly larger text size */
+  color: #d35d90; /* Vibrant pink for text */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.grid-samples:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.grid-samples-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 1rem;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-columns: auto;
+}
+
+.right-images {
+  width: 7rem;
+  height: 7rem;
+}
+
+.search-create {
+  background-color: #fdf5e6; /* Soft cream background */
+  border: 2px solid #ffb6c1; /* Soft pink border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px; /* Inner spacing */
+  font-family: "Comic Sans MS", "Arial", sans-serif; /* Fun font */
+  font-size: 16px; /* Comfortable text size */
+  color: #ff69b4; /* Vibrant pink text */
+  width: 25%; /* Full width for responsiveness */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth focus/hover effects */
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import "./Create.css";
+
 import FlyImage from "../assets/Fly.png";
 import RideImage from "../assets/Ride.png";
 import NeonImage from "../assets/Neon.png";
 import MegaImage from "../assets/Mega.png";
-import FilterImage from "../assets/filter.png";
-import EditModal from "./EditModal";
+import "./EditModal.css";
 
-const Create = ({ pets, setPets }) => {
+const EditModal = () => {
   const [formData, setFormData] = useState({
     pet_name: "",
     pet_image: "",
@@ -24,7 +23,9 @@ const Create = ({ pets, setPets }) => {
     mega_ride: "",
     mega_fly_ride: "",
   });
-
+  const handleSubmit = () => {
+    console.log("submitting");
+  };
   const handleChange = (e) => {
     console.log(e);
     if (e.target.files?.length > 0) {
@@ -39,60 +40,10 @@ const Create = ({ pets, setPets }) => {
       [name]: value,
     });
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/pets", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Success:", data);
-        // Update pets state with the newly created pet
-        setPets((prevPets) => [...prevPets, data]);
-
-        // Clear the form
-        setFormData({
-          pet_name: "",
-          pet_image: "",
-          normal_no_potion: "",
-          normal_fly: "",
-          normal_ride: "",
-          normal_fly_ride: "",
-          neon_no_potion: "",
-          neon_fly: "",
-          neon_ride: "",
-          neon_fly_ride: "",
-          mega_no_potion: "",
-          mega_fly: "",
-          mega_ride: "",
-          mega_fly_ride: "",
-        });
-      } else {
-        const errorData = await response.json();
-        console.error("Error:", errorData);
-      }
-    } catch (error) {
-      console.error("Request failed:", error.data);
-    }
-  };
-
   return (
-    <div className="main-page-create">
-      <header className="create-header">
-        <div className="page-title">Create Pet Value</div>
-        <div className="btn-container">
-          <button className="back-button">Go Back</button>
-        </div>
-      </header>
-      <div className="create-page-content">
-        <form className="separate-up-down" onSubmit={handleSubmit}>
+    <div className="modal-overlay">
+      <div className="edit-modal-content">
+        <form onSubmit={handleSubmit}>
           <div className="main-div">
             <div className="img-container">
               <img
@@ -102,7 +53,7 @@ const Create = ({ pets, setPets }) => {
                 className="preview-image"
               />
             </div>
-            <label htmlFor="upload" className="choose-image-button">
+            <label htmlFor="upload" className="choose-image-button" hidden>
               Choose Image
             </label>
             <input
@@ -121,10 +72,11 @@ const Create = ({ pets, setPets }) => {
                 onChange={(e) => handleChange(e)}
                 placeholder="Pet Name"
                 className="pet-name-input"
+                disabled
               />
             </label>
           </div>
-          <div className="pet-attributes">
+          <div className="edit-pet-attributes">
             <label className="specific-attribute-container">
               <div className="specific-attributes">No Potion Normal: </div>
               <input
@@ -132,6 +84,7 @@ const Create = ({ pets, setPets }) => {
                 value={formData.normal_no_potion}
                 onChange={handleChange}
                 className="attribute-text-box"
+                disabled
               />
             </label>
             <label className="specific-attribute-container">
@@ -292,33 +245,9 @@ const Create = ({ pets, setPets }) => {
             Submit
           </button>
         </form>
-        <div className="right-content">
-          <div className="search-filter-container">
-            <input type="text" placeholder="Search" className="search-create" />
-            <div className="filter-container">
-              <img src={FilterImage} alt="" className="filter-image" />
-            </div>
-          </div>
-          <div className="grid-samples-container">
-            {pets && pets.length > 0 ? (
-              pets.map((pet, index) => (
-                <div className="grid-samples" key={index}>
-                  <img
-                    src={`../public/images/${pet.pet_image}`}
-                    alt={`Pet ${pet.pet_image}`}
-                    className="right-images"
-                  />
-                </div>
-              ))
-            ) : (
-              <p>No pets available</p>
-            )}
-          </div>
-        </div>
       </div>
-      <EditModal />
     </div>
   );
 };
 
-export default Create;
+export default EditModal;

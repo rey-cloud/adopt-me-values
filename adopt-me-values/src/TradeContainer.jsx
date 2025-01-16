@@ -6,23 +6,11 @@ import Ride from "./assets/Ride.png";
 import Neon from "./assets/Neon.png";
 import Mega from "./assets/Mega.png";
 
-const TradeContainer = ({ value, setValue }) => {
+const TradeContainer = ({ value, setValue, pets, setPets, allPets }) => {
   // Array representing the grid items
   const [gridItems, setGridItems] = useState([]); // Generates 10 items
   const [showModal, setModal] = useState(false);
   const [addVal, setAddVal] = useState(true);
-  const [pets, setPets] = useState([]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/pets")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log("All Pets: ", data);
-        setPets(data);
-      });
-  }, []);
 
   const renderContent = (currentID, previousID) => {
     if (gridItems[currentID]) {
@@ -63,6 +51,7 @@ const TradeContainer = ({ value, setValue }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    setPets(allPets);
     setModal(true);
   };
 
@@ -336,6 +325,7 @@ const TradeContainer = ({ value, setValue }) => {
       <Modal
         show={showModal}
         onClose={() => setModal(false)}
+        gridItems={gridItems}
         setGridItems={setGridItems}
         setAddVal={setAddVal}
         pets={pets}

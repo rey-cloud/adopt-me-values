@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 import "./Modal.css";
 import dragon from "./assets/Dragon_Pet.webp";
 
-const Modal = ({ show, onClose, setGridItems, setAddVal, pets, setPets }) => {
+const Modal = ({
+  show,
+  onClose,
+  gridItems,
+  setGridItems,
+  setAddVal,
+  pets,
+  setPets,
+}) => {
   if (!show) return null;
 
   const [fly, setFly] = useState(false);
@@ -33,6 +41,12 @@ const Modal = ({ show, onClose, setGridItems, setAddVal, pets, setPets }) => {
   };
 
   const handleClick = (pet) => {
+    console.log(gridItems.length);
+    if (gridItems.length == 17) {
+      console.log("inside close");
+      onClose();
+    }
+
     setAddVal(true);
     let value;
 
@@ -105,7 +119,11 @@ const Modal = ({ show, onClose, setGridItems, setAddVal, pets, setPets }) => {
         <span className="close-button" onClick={onClose}>
           <i className="fa-solid fa-xmark"></i>
         </span>
-        <input type="text" onChange={(e) => search(e)} />
+        <input
+          type="text"
+          onChange={(e) => search(e)}
+          className="modal-search"
+        />
 
         <div className="container-modal">
           {pets && pets.length > 0 ? (
